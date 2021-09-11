@@ -41,4 +41,5 @@
 
 * [Docs](my_docs/docs.md)
 * [React Components](my_docs/react-components.md)
+* [Composition vs Inheritance](my_docs/composition-vs-inheritance.md)
 
