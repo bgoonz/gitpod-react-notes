@@ -1,7 +1,5 @@
 # Hello World
 
-
-
 ## Hello World
 
 The smallest React example looks like this:

@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Closure-and-Scope](README.md)
+* [index](README.md)
 * [Callbacks](callbacks.md)
 * [General Notes](general-notes.md)
 * [Review-Of-Previous-Concepts](review-of-previous-concepts.md)
@@ -24,4 +24,8 @@
 * [Hello World](react-md/hello-world.md)
 * [Components And Props](react-md/components-and-props.md)
 * [JSX](react-md/jsx.md)
+
+## projects
+
+* [Project Examples](projects/project-examples.md)
 

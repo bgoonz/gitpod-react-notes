@@ -1,7 +1,5 @@
 # Reiew
 
-
-
 **Spreading Arguments**
 
 ```javascript

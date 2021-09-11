@@ -1,8 +1,6 @@
 # React-Resources
 
-
-
-#### **Awesome React** [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+## **Awesome React** [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 A collection of awesome things regarding the React ecosystem.
 
@@ -72,7 +70,7 @@ A collection of awesome things regarding the React ecosystem.
 * Real React Apps
 * Contribution
 
-#### React
+## React
 
 > JavaScript Library for building User Interfaces
 
@@ -477,7 +475,7 @@ A collection of awesome things regarding the React ecosystem.
 * [react-apexcharts](https://github.com/apexcharts/react-apexcharts) - React Component for ApexCharts
 * [chartify](https://github.com/kis/chartify) - React plugin for building charts using CSS
 
-#### React Native
+## React Native
 
 > Framework for building native apps using React
 
@@ -550,7 +548,7 @@ A collection of awesome things regarding the React ecosystem.
 * [react-native-react-bridge](https://github.com/inokawa/react-native-react-bridge) - A toolset to run React web app in React Native and handle communication between them.
 * [uncompress-react-native](https://github.com/didisouzacosta/uncompress-react-native) - Simple library to decompress files .zip, .rar, .cbz, .cbr in React Native.
 
-#### Redux
+## Redux
 
 > Predictable State Container for JavaScript Apps
 
@@ -582,7 +580,7 @@ A collection of awesome things regarding the React ecosystem.
 * [Fundamentals of Redux Course from Dan Abramov](https://app.egghead.io/playlists/fundamentals-of-redux-course-from-dan-abramov-bd5cc867)
 * [Building React Applications with Idiomatic Redux](https://app.egghead.io/courses/building-react-applications-with-idiomatic-redux)
 
-#### GraphQL
+## GraphQL
 
 > A query language for your API
 
@@ -624,7 +622,7 @@ A collection of awesome things regarding the React ecosystem.
 
 * [graphql-sequelize](https://github.com/mickhansen/graphql-sequelize) - GraphQL & Relay for MySQL & Postgres via Sequelize
 
-#### Relay
+## Relay
 
 > Data-Driven React Applications
 
@@ -647,7 +645,7 @@ A collection of awesome things regarding the React ecosystem.
 * [relay-local-schema](https://github.com/relay-tools/relay-local-schema) - Use Relay without a GraphQL server
 * [relay-codemod](https://github.com/facebook/jscodeshift) - Codemod scripts based for on jsodeshift to update Relay APIs
 
-#### Videos
+## Videos
 
 **reactjsvideos.com**
 
@@ -702,14 +700,14 @@ A collection of awesome things regarding the React ecosystem.
 
 * [Trying React Hooks for the first time with Dan Abramov](https://www.youtube.com/watch?v=G-aO5hzo1aw)
 
-#### Demo React Apps
+## Demo React Apps
 
 * [hackernews-react-graphql](https://github.com/clintonwoo/hackernews-react-graphql) - Hacker News clone rewritten with universal JavaScript, using React and GraphQL
 * [react-reduction](https://github.com/reduction-admin/react-reduction) - Free Admin Template Built with React and Bootstrap4
 * [reactjs-tmdb-app](https://github.com/SKempin/reactjs-tmdb-app) - Responsive React The Movie Database App
 * [react-shopping-cart](https://github.com/jeffersonRibeiro/react-shopping-cart) - Simple ecommerce cart application built with React Redux
 
-#### Real React Apps
+## Real React Apps
 
 * [kibana](https://github.com/elastic/kibana) - Your window into the Elastic Stack
 * [firefox debugger](https://github.com/firefox-devtools/debugger) - The Firefox debugger that works anywhere

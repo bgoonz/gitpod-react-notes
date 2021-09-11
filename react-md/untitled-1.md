@@ -1,7 +1,5 @@
 # Thinking in React
 
-
-
 ## Start With A Mock
 
 Imagine that we already have a JSON API and a mock from our designer. The mock looks like this:

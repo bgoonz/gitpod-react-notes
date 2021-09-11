@@ -1,7 +1,5 @@
 # Scope
 
-
-
 ## All About Scope
 
 The **scope** of a program in JavaScript is the set of variables that are available for use within the program. If a variable or other expression is not in the current scope, then it is unavailable for use. If we declare a variable, this variable will only be valid in the scope where we declared it. We can have nested scopes, but we'll see that in a little bit.
@@ -1271,8 +1269,6 @@ hidden1(); // returns 2
 let hidden2 = hiddenCounter(); // returns a function
 hidden2(); // returns 1
 ```
-
-
 
 ### The Answer
 

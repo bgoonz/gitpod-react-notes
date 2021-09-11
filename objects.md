@@ -1,7 +1,5 @@
 # Objects
 
-
-
 ## **Notes**
 
 ### **The Object Type**

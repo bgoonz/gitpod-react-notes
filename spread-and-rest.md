@@ -131,7 +131,5 @@ function goodDogs (dog1, dog2, dog3) {
 
 // console.log(largeDogs);
 // goodDogs(largeDogs);
-
-
 ```
 

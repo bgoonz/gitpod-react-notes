@@ -4,7 +4,7 @@ React has a powerful composition model, and we recommend using composition inste
 
 In this section, we will consider a few problems where developers new to React often reach for inheritance, and show how we can solve them with composition.
 
-### Containment
+## Containment
 
 Some components don’t know their children ahead of time. This is especially common for components like `Sidebar` or `Dialog` that represent generic “boxes”.
 
@@ -63,7 +63,7 @@ function App() {
 
 React elements like `<Contacts />` and `<Chat />` are just objects, so you can pass them as props like any other data. This approach may remind you of “slots” in other libraries but there are no limitations on what you can pass as props in React.
 
-### Specialization
+## Specialization
 
 Sometimes we think about components as being “special cases” of other components. For example, we might say that a `WelcomeDialog` is a special case of `Dialog`.
 
@@ -133,7 +133,7 @@ class SignUpDialog extends React.Component {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
 
-### So What About Inheritance?
+## So What About Inheritance?
 
 At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies.
 

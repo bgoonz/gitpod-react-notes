@@ -2,8 +2,6 @@
 
 ## Functions:
 
-
-
 ```javascript
 # Function Context Cheatsheet
 
@@ -37,14 +35,14 @@ unnamedFunc(); // Global context
 
 ### Named Function
 
-- explicit `return` keyword required
-- curly braces `{}` around function body
-- **NOT** saved to a variable
-- parameters must be surrounded by parentheses `()`
-- context is defined by how it's invoked or called
-  - function-style: global context
-  - method-style: context is object that function is being called on
-- calling `bind` on the function will return a function binded to the context of the `bind` argument
+* explicit `return` keyword required
+* curly braces `{}` around function body
+* **NOT** saved to a variable
+* parameters must be surrounded by parentheses `()`
+* context is defined by how it's invoked or called
+  * function-style: global context
+  * method-style: context is object that function is being called on
+* calling `bind` on the function will return a function binded to the context of the `bind` argument
 
 ```javascript
 function namedFunc(params) {
@@ -59,14 +57,14 @@ const bindedNamedFunc = namedFunc.bind(obj);
 
 ### Unnamed Function
 
-- explicit `return` keyword required
-- curly braces `{}` around function body
-- **MUST** be saved to a variable
-- parameters must be surrounded by parentheses `()`
-- context is defined by how it's invoked or called
-  - function-style: global context
-  - method-style: context is object that function is being called on
-- calling `bind` on the function will return a function binded to the context of the `bind` argument
+* explicit `return` keyword required
+* curly braces `{}` around function body
+* **MUST** be saved to a variable
+* parameters must be surrounded by parentheses `()`
+* context is defined by how it's invoked or called
+  * function-style: global context
+  * method-style: context is object that function is being called on
+* calling `bind` on the function will return a function binded to the context of the `bind` argument
 
 ```javascript
 const unnamedFunc = function(params) {
@@ -81,12 +79,12 @@ const bindedUnnamedFunc = unnamedFunc.bind(obj);
 
 ### Explicit Fat Arrow Function
 
-- explicit `return` keyword required
-- curly braces `{}` around function body
-- **MUST** be saved to a variable
-- parameters must be surrounded by parentheses `()` **IF more than one parameter**
-- takes the context of where it's defined
-- **CANNOT** be binded using `bind`
+* explicit `return` keyword required
+* curly braces `{}` around function body
+* **MUST** be saved to a variable
+* parameters must be surrounded by parentheses `()` **IF more than one parameter**
+* takes the context of where it's defined
+* **CANNOT** be binded using `bind`
 
 ```javascript
 const explicitFatArrow = params => {
@@ -96,14 +94,16 @@ const explicitFatArrow = params => {
 
 ### Implicit Fat Arrow Function
 
-- **NO** `return` keyword
-- function body can only consist of what is being returned
-- Optional parentheses `()` around function body
-> NOTE: Parentheses needs to be used if returning an object `ex: ({ key: value })`
-- **MUST** be saved to a variable
-- parameters must be surrounded by parentheses `()` **IF more than one parameter**
-- takes the context of where it's defined
-- **CANNOT** be binded using `bind`
+* **NO** `return` keyword
+* function body can only consist of what is being returned
+* Optional parentheses `()` around function body
+
+  > NOTE: Parentheses needs to be used if returning an object `ex: ({ key: value })`
+
+* **MUST** be saved to a variable
+* parameters must be surrounded by parentheses `()` **IF more than one parameter**
+* takes the context of where it's defined
+* **CANNOT** be binded using `bind`
 
 ```javascript
 const implicitFatArrow = (params) => 'implicit fat arrow function';
@@ -120,18 +120,12 @@ const implicitFatArrow = (params) => ({
 ```
 
 ## Bind
-- `bind` accepts multiple arguments
-- first argument is the context that you want to bind the function to
-- any arguments that come afterwards will be passed in when the bound function is called **BEFORE** the call time arguments
-```
 
+* `bind` accepts multiple arguments
+* first argument is the context that you want to bind the function to
+* any arguments that come afterwards will be passed in when the bound function is called **BEFORE** the call time arguments
 
-
-
-
-
-
-
+  \`\`\`
 
 ```javascript
 // Arrow Functions
@@ -293,14 +287,7 @@ const zoomMeeting = {
 };
 
 zoomMeeting.listStudents();
-
 ```
-
-
-
-
-
-
 
 ## Scope:
 
@@ -521,12 +508,9 @@ let breakfastOrder = dinerBreakfast3();
 console.log(breakfastOrder);
 console.log(breakfastOrder('cappuccino'));
 console.log(breakfastOrder('pancakes'));
-
 ```
 
-
-
-## Context: 
+## Context:
 
 ```javascript
 // In the following examples we will predict what will
@@ -740,6 +724,4 @@ printDigby(2008);
 // const printRealDigby = printAge.bind(dog, 4);
 // printRealDigby(2002);
 ```
-
-
 

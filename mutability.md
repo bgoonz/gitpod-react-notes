@@ -1,8 +1,6 @@
 # Mutability
 
-### 
-
-### Mutability && Primitive && Reference Examples
+## Mutability && Primitive && Reference Examples
 
 Objects are passed by reference, are mutable, and can be modified by our functions:
 
@@ -31,9 +29,9 @@ console.log(str);
 console.log(ret);
 ```
 
-### Dereferencing
+## Dereferencing
 
-#### Arrays
+### Arrays
 
 To dereference an array, use `let [var1, var2]` syntax.
 
@@ -44,7 +42,7 @@ let [first] = arr;
 console.log(first);
 ```
 
-#### Objects
+### Objects
 
 To dereference attributes from an object, use `let {}` syntax.
 
