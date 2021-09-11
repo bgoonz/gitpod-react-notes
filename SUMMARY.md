@@ -7,7 +7,7 @@
 * [Understanding By Example](understanding-by-example.md)
 * [Spread and Rest](spread-and-rest.md)
 
-## REACT-MD
+## REACT-RESOURCES <a id="react-md"></a>
 
 * [index](react-md/appendix.md)
 * [React-Resources](react-md/react-resources.md)
