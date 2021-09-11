@@ -43,3 +43,7 @@
 * [React Components](my_docs/react-components.md)
 * [Composition vs Inheritance](my_docs/composition-vs-inheritance.md)
 
+## Methodologies
+
+* [Node.js versus Next.js - A React Approach](methodologies/node.js-versus-next.js-a-react-approach.md)
+
