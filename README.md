@@ -1,5 +1,9 @@
 # index
 
+## Website:
+
+{% embed url="https://bryan-guner.gitbook.io/mynotes/" %}
+
 
 
 ## Repo
