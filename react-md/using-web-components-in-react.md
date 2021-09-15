@@ -49,5 +49,7 @@ class XSearch extends HTMLElement {
 customElements.define('x-search', XSearch);
 ```
 
-&gt;
+{% embed url="https://gist.github.com/bgoonz/64471e172e886453610adc09c43c80fe" %}
+
+
 
