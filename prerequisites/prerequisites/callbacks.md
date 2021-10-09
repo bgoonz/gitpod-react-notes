@@ -205,7 +205,7 @@ How do you download three pictures and process them sequentially? A typical appr
 
 \`\`function download\(url, callback\) { setTimeout\(\(\) =&gt; {
 
-```text
+```js
     console.log(`Downloading ${url} ...`);
 
     callback(url);
@@ -265,7 +265,7 @@ In JavaScript, functions are objects. Can we pass objects to functions as parame
 
 So, we can also pass functions as parameters to other functions and call them inside the outer functions. Sounds complicated? Let me show that in an example below:
 
-```text
+```js
 function print(callback) {  
     callback();
 }

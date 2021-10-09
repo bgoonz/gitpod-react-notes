@@ -32,7 +32,7 @@ JSX is a syntax extension to JavaScript. It is similar to a template language, b
 
 React DOM uses camelCase property naming convention instead of HTML attribute names. For example, `tabindex` becomes `tabIndex` in JSX. The attribute `class` is also written as `className` since `class` is a reserved word in JavaScript:
 
-```text
+```js
 const name = 'Clementine';
 ReactDOM.render(
   <h1 className="hello">My name is {name}!</h1>,
@@ -44,7 +44,7 @@ ReactDOM.render(
 
 React elements are the building blocks of React applications. One might confuse elements with a more widely known concept of “components”. An element describes what you want to see on the screen. React elements are immutable.
 
-```text
+```js
 const element = <h1>Hello, world</h1>;
 ```
 
@@ -54,7 +54,7 @@ Typically, elements are not used directly, but get returned from components.
 
 React components are small, reusable pieces of code that return a React element to be rendered to the page. The simplest version of React component is a plain JavaScript function that returns a React element:
 
-```text
+```js
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -62,7 +62,7 @@ function Welcome(props) {
 
 Components can also be ES6 classes:
 
-```text
+```js
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
@@ -84,13 +84,13 @@ If you need to modify some value in response to user input or a network response
 
 `props.children` is available on every component. It contains the content between the opening and closing tags of a component. For example:
 
-```text
+```js
 <Welcome>Hello world!</Welcome>
 ```
 
 The string `Hello world!` is available in `props.children` in the `Welcome` component:
 
-```text
+```js
 function Welcome(props) {
   return <p>{props.children}</p>;
 }
@@ -98,7 +98,7 @@ function Welcome(props) {
 
 For components defined as classes, use `this.props.children`:
 
-```text
+```js
 class Welcome extends React.Component {
   render() {
     return <p>{this.props.children}</p>;

@@ -155,7 +155,7 @@ This is typically implemented by attaching a `click` event to the `window` objec
 
 \`class OuterClickExample extends React.Component { constructor\(props\) { super\(props\);
 
-```text
+```js
 this.state = { isOpen: false };
 this.toggleContainer = React.createRef();
 
@@ -179,7 +179,7 @@ The same functionality can be achieved by using appropriate event handlers inste
 
 \`class BlurExample extends React.Component { constructor\(props\) { super\(props\);
 
-```text
+```js
 this.state = { isOpen: false };
 this.timeOutId = null;
 
@@ -268,7 +268,7 @@ The [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) 
 
 [Create React App](https://github.com/facebookincubator/create-react-app) has this plugin with a subset of rules activated. If you want to enable even more accessibility rules, you can create an `.eslintrc` file in the root of your project with this content:
 
-```text
+```js
 {
   "extends": ["react-app", "plugin:jsx-a11y/recommended"],
   "plugins": ["jsx-a11y"]
@@ -358,14 +358,14 @@ Most React apps will have their files “bundled” using tools like [Webpack](h
 
 **App:**
 
-```text
+```js
 // app.js
 import { add } from './math.js';
 
 console.log(add(16, 26)); // 42
 ```
 
-```text
+```js
 // math.js
 export function add(a, b) {
   return a + b;
@@ -374,7 +374,7 @@ export function add(a, b) {
 
 **Bundle:**
 
-```text
+```js
 function add(a, b) {
   return a + b;
 }
@@ -402,7 +402,7 @@ The best way to introduce code-splitting into your app is through the dynamic `i
 
 **Before:**
 
-```text
+```js
 import { add } from './math';
 
 console.log(add(16, 26));
@@ -410,7 +410,7 @@ console.log(add(16, 26));
 
 **After:**
 
-```text
+```js
 import("./math").then(math => {
   console.log(math.add(16, 26));
 });
@@ -430,13 +430,13 @@ The `React.lazy` function lets you render a dynamic import as a regular componen
 
 **Before:**
 
-```text
+```js
 import OtherComponent from './OtherComponent';
 ```
 
 **After:**
 
-```text
+```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
 
@@ -446,7 +446,7 @@ This will automatically load the bundle containing the `OtherComponent` when thi
 
 The lazy component should then be rendered inside a `Suspense` component, which allows us to show some fallback content \(such as a loading indicator\) while we’re waiting for the lazy component to load.
 
-```text
+```js
 import React, { Suspense } from 'react';
 
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -463,7 +463,7 @@ function MyComponent() {
 
 The `fallback` prop accepts any React elements that you want to render while waiting for the component to load. You can place the `Suspense` component anywhere above the lazy component. You can even wrap multiple lazy components with a single `Suspense` component.
 
-```text
+```js
 import React, { Suspense } from 'react';
 
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -486,7 +486,7 @@ function MyComponent() {
 
 If the other module fails to load \(for example, due to network failure\), it will trigger an error. You can handle these errors to show a nice user experience and manage recovery with [Error Boundaries](https://reactjs.org/docs/error-boundaries.html). Once you’ve created your Error Boundary, you can use it anywhere above your lazy components to display an error state when there’s a network error.
 
-```text
+```js
 import React, { Suspense } from 'react';
 import MyErrorBoundary from './MyErrorBoundary';
 
@@ -514,7 +514,7 @@ A good place to start is with routes. Most people on the web are used to page tr
 
 Here’s an example of how to setup route-based code splitting into your app using libraries like [React Router](https://reacttraining.com/react-router/) with `React.lazy`.
 
-```text
+```js
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -536,18 +536,18 @@ const App = () => (
 
 `React.lazy` currently only supports default exports. If the module you want to import uses named exports, you can create an intermediate module that reexports it as the default. This ensures that tree shaking keeps working and that you don’t pull in unused components.
 
-```text
+```js
 // ManyComponents.js
 export const MyComponent = /* ... */;
 export const MyUnusedComponent = /* ... */;
 ```
 
-```text
+```js
 // MyComponent.js
 export { MyComponent as default } from "./ManyComponents.js";
 ```
 
-```text
+```js
 // MyApp.js
 import React, { lazy } from 'react';
 const MyComponent = lazy(() => import("./MyComponent.js"));
@@ -578,7 +578,7 @@ In a typical React application, data is passed top-down \(parent to child\) via 
 
 Context is designed to share data that can be considered “global” for a tree of React components, such as the current authenticated user, theme, or preferred language. For example, in the code below we manually thread through a “theme” prop in order to style the Button component:
 
-```text
+```js
 class App extends React.Component {
   render() {
     return <Toolbar theme="dark" />;
@@ -599,7 +599,7 @@ class ThemedButton extends React.Component {
 
 Using context, we can avoid passing props through intermediate elements:
 
-```text
+```js
 // Context lets us pass a value deep into the component tree// without explicitly threading it through every component.// Create a context for the current theme (with "light" as the default).const ThemeContext = React.createContext('light');class App extends React.Component {
   render() {
     // Use a Provider to pass the current theme to the tree below.    // Any component can read it, no matter how deep it is.    // In this example, we're passing "dark" as the current value.    return (
@@ -627,7 +627,7 @@ Context is primarily used when some data needs to be accessible by _many_ compon
 
 For example, consider a `Page` component that passes a `user` and `avatarSize` prop several levels down so that deeply nested `Link` and `Avatar` components can read it:
 
-```text
+```js
 <Page user={user} avatarSize={avatarSize} />// ... which renders ...
 <PageLayout user={user} avatarSize={avatarSize} />// ... which renders ...
 <NavigationBar user={user} avatarSize={avatarSize} />// ... which renders ...
@@ -640,7 +640,7 @@ It might feel redundant to pass down the `user` and `avatarSize` props through m
 
 One way to solve this issue **without context** is to [pass down the `Avatar` component itself](https://reactjs.org/docs/composition-vs-inheritance.html#containment) so that the intermediate components don’t need to know about the `user` or `avatarSize` props:
 
-```text
+```js
 function Page(props) {
   const user = props.user;
   const userLink = (
@@ -663,7 +663,7 @@ This _inversion of control_ can make your code cleaner in many cases by reducing
 
 You’re not limited to a single child for a component. You may pass multiple children, or even have multiple separate “slots” for children, [as documented here](https://reactjs.org/docs/composition-vs-inheritance.html#containment):
 
-```text
+```js
 function Page(props) {
   const user = props.user;
   const content = <Feed user={user} />;
@@ -686,7 +686,7 @@ However, sometimes the same data needs to be accessible by many components in th
 
 ## `React.createContext`
 
-```text
+```js
 const MyContext = React.createContext(defaultValue);
 ```
 
@@ -696,7 +696,7 @@ The `defaultValue` argument is **only** used when a component does not have a ma
 
 ## `Context.Provider`
 
-```text
+```js
 <MyContext.Provider value={/* some value */}>
 ```
 
@@ -712,7 +712,7 @@ Changes are determined by comparing the new and old values using the same algori
 
 ## `Class.contextType`
 
-```text
+```js
 class MyClass extends React.Component {
   componentDidMount() {
     let value = this.context;
@@ -738,7 +738,7 @@ The `contextType` property on a class can be assigned a Context object created b
 
 > Note:You can only subscribe to a single context using this API. If you need to read more than one see Consuming Multiple Contexts.If you are using the experimental public class fields syntax, you can use a static class field to initialize your contextType.
 
-```text
+```js
 class MyClass extends React.Component {
   static contextType = MyContext;
   render() {
@@ -750,7 +750,7 @@ class MyClass extends React.Component {
 
 ## `Context.Consumer`
 
-```text
+```js
 <MyContext.Consumer>
   {value => /* render something based on the context value */}
 </MyContext.Consumer>
@@ -768,7 +768,7 @@ Context object accepts a `displayName` string property. React DevTools uses this
 
 For example, the following component will appear as MyDisplayName in the DevTools:
 
-```text
+```js
 const MyContext = React.createContext(/* some value */);
 MyContext.displayName = 'MyDisplayName';<MyContext.Provider> // "MyDisplayName.Provider" in DevTools
 <MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
@@ -782,7 +782,7 @@ A more complex example with dynamic values for the theme:
 
 **theme-context.js**
 
-```text
+```js
 export const themes = {
   light: {
     foreground: '#000000',
@@ -799,7 +799,7 @@ export const ThemeContext = React.createContext(  themes.dark // default value);
 
 **themed-button.js**
 
-```text
+```js
 import {ThemeContext} from './theme-context';
 
 class ThemedButton extends React.Component {
@@ -815,7 +815,7 @@ ThemedButton.contextType = ThemeContext;export default ThemedButton;
 
 **app.js**
 
-```text
+```js
 import {ThemeContext, themes} from './theme-context';
 import ThemedButton from './themed-button';
 
@@ -858,7 +858,7 @@ It is often necessary to update the context from a component that is nested some
 
 **theme-context.js**
 
-```text
+```js
 // Make sure the shape of the default value passed to
 // createContext matches the shape that the consumers expect!
 export const ThemeContext = React.createContext({
@@ -867,7 +867,7 @@ export const ThemeContext = React.createContext({
 
 **theme-toggler-button.js**
 
-```text
+```js
 import {ThemeContext} from './theme-context';
 
 function ThemeTogglerButton() {
@@ -883,7 +883,7 @@ export default ThemeTogglerButton;
 
 **app.js**
 
-```text
+```js
 import {ThemeContext, themes} from './theme-context';
 import ThemeTogglerButton from './theme-toggler-button';
 
@@ -923,7 +923,7 @@ ReactDOM.render(<App />, document.root);
 
 To keep context re-rendering fast, React needs to make each context consumer a separate node in the tree.
 
-```text
+```js
 // Theme context, default to light theme
 const ThemeContext = React.createContext('light');
 
@@ -960,7 +960,7 @@ If two or more context values are often used together, you might want to conside
 
 Because context uses reference identity to determine when to re-render, there are some gotchas that could trigger unintentional renders in consumers when a provider’s parent re-renders. For example, the code below will re-render all consumers every time the Provider re-renders because a new object is always created for `value`:
 
-```text
+```js
 class App extends React.Component {
   render() {
     return (
@@ -971,7 +971,7 @@ class App extends React.Component {
 
 To get around this, lift the value into the parent’s state:
 
-```text
+```js
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -994,7 +994,7 @@ class App extends React.Component {
 
 ## A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
 
-```text
+```js
 render() {
   return (
     <React.Fragment>
@@ -1011,7 +1011,7 @@ There is also a new [short syntax](https://reactjs.org/docs/fragments.html#short
 
 A common pattern is for a component to return a list of children. Take this example React snippet:
 
-```text
+```js
 class Table extends React.Component {
   render() {
     return (
@@ -1026,7 +1026,7 @@ class Table extends React.Component {
 
 `<Columns />` would need to return multiple `<td>` elements in order for the rendered HTML to be valid. If a parent div was used inside the `render()` of `<Columns />`, then the resulting HTML will be invalid.
 
-```text
+```js
 class Columns extends React.Component {
   render() {
     return (
@@ -1040,7 +1040,7 @@ class Columns extends React.Component {
 
 results in a `<Table />` output of:
 
-```text
+```js
 <table>
   <tr>
     <div>
@@ -1055,7 +1055,7 @@ Fragments solve this problem.
 
 ## Usage
 
-```text
+```js
 class Columns extends React.Component {
   render() {
     return (
@@ -1066,7 +1066,7 @@ class Columns extends React.Component {
 
 which results in a correct `<Table />` output of:
 
-```text
+```js
 <table>
   <tr>
     <td>Hello</td>
@@ -1079,7 +1079,7 @@ which results in a correct `<Table />` output of:
 
 There is a new, shorter syntax you can use for declaring fragments. It looks like empty tags:
 
-```text
+```js
 class Columns extends React.Component {
   render() {
     return (
@@ -1094,7 +1094,7 @@ You can use `<></>` the same way you’d use any other element except that it do
 
 Fragments declared with the explicit `<React.Fragment>` syntax may have keys. A use case for this is mapping a collection to an array of fragments — for example, to create a description list:
 
-```text
+```js
 function Glossary(props) {
   return (
     <dl>
@@ -1136,7 +1136,7 @@ Components are the primary unit of code reuse in React. However, you’ll find t
 
 For example, say you have a `CommentList` component that subscribes to an external data source to render a list of comments:
 
-```text
+```js
 class CommentList extends React.Component {
   constructor(props) {
     super(props);
@@ -1176,7 +1176,7 @@ class CommentList extends React.Component {
 
 Later, you write a component for subscribing to a single blog post, which follows a similar pattern:
 
-```text
+```js
 class BlogPost extends React.Component {
   constructor(props) {
     super(props);
@@ -1216,7 +1216,7 @@ You can imagine that in a large app, this same pattern of subscribing to `DataSo
 
 We can write a function that creates components, like `CommentList` and `BlogPost`, that subscribe to `DataSource`. The function will accept as one of its arguments a child component that receives the subscribed data as a prop. Let’s call the function `withSubscription`:
 
-```text
+```js
 const CommentListWithSubscription = withSubscription(
   CommentList,
   (DataSource) => DataSource.getComments()
@@ -1232,7 +1232,7 @@ The first parameter is the wrapped component. The second parameter retrieves the
 
 When `CommentListWithSubscription` and `BlogPostWithSubscription` are rendered, `CommentList` and `BlogPost` will be passed a `data` prop with the most current data retrieved from `DataSource`:
 
-```text
+```js
 // This function takes a component...
 function withSubscription(WrappedComponent, selectData) {
   // ...and returns another component...
@@ -1281,7 +1281,7 @@ Like components, the contract between `withSubscription` and the wrapped compone
 
 Resist the temptation to modify a component’s prototype \(or otherwise mutate it\) inside a HOC.
 
-```text
+```js
 function logProps(InputComponent) {
   InputComponent.prototype.componentDidUpdate = function(prevProps) {
     console.log('Current props: ', this.props);
@@ -1302,7 +1302,7 @@ Mutating HOCs are a leaky abstraction—the consumer must know how they are impl
 
 Instead of mutation, HOCs should use composition, by wrapping the input component in a container component:
 
-```text
+```js
 function logProps(WrappedComponent) {
   return class extends React.Component {
     componentDidUpdate(prevProps) {
@@ -1327,7 +1327,7 @@ HOCs add features to a component. They shouldn’t drastically alter its contrac
 
 HOCs should pass through props that are unrelated to its specific concern. Most HOCs contain a render method that looks something like this:
 
-```text
+```js
 render() {
   // Filter out extra props that are specific to this HOC and shouldn't be
   // passed through
@@ -1349,26 +1349,26 @@ This convention helps ensure that HOCs are as flexible and reusable as possible.
 
 Not all HOCs look the same. Sometimes they accept only a single argument, the wrapped component:
 
-```text
+```js
 const NavbarWithRouter = withRouter(Navbar);
 ```
 
 Usually, HOCs accept additional arguments. In this example from Relay, a config object is used to specify a component’s data dependencies:
 
-```text
+```js
 const CommentWithRelay = Relay.createContainer(Comment, config);
 ```
 
 The most common signature for HOCs looks like this:
 
-```text
+```js
 // React Redux's `connect`
 const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
 ```
 
 _What?!_ If you break it apart, it’s easier to see what’s going on.
 
-```text
+```js
 // connect is a function that returns another function
 const enhance = connect(commentListSelector, commentListActions);
 // The returned function is a HOC, which returns a component that is connected
@@ -1380,7 +1380,7 @@ In other words, `connect` is a higher-order function that returns a higher-order
 
 This form may seem confusing or unnecessary, but it has a useful property. Single-argument HOCs like the one returned by the `connect` function have the signature `Component => Component`. Functions whose output type is the same as its input type are really easy to compose together.
 
-```text
+```js
 // Instead of doing this...
 const EnhancedComponent = withRouter(connect(commentSelector)(WrappedComponent))
 
@@ -1404,7 +1404,7 @@ The container components created by HOCs show up in the [React Developer Tools](
 
 The most common technique is to wrap the display name of the wrapped component. So if your higher-order component is named `withSubscription`, and the wrapped component’s display name is `CommentList`, use the display name `WithSubscription(CommentList)`:
 
-```text
+```js
 function withSubscription(WrappedComponent) {
   class WithSubscription extends React.Component {/* ... */}
   WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
@@ -1426,7 +1426,7 @@ React’s diffing algorithm \(called [Reconciliation](https://reactjs.org/docs/r
 
 Normally, you shouldn’t need to think about this. But it matters for HOCs because it means you can’t apply a HOC to a component within the render method of a component:
 
-```text
+```js
 render() {
   // A new version of EnhancedComponent is created on every render
   // EnhancedComponent1 !== EnhancedComponent2
@@ -1448,7 +1448,7 @@ Sometimes it’s useful to define a static method on a React component. For exam
 
 When you apply a HOC to a component, though, the original component is wrapped with a container component. That means the new component does not have any of the static methods of the original component.
 
-```text
+```js
 // Define a static method
 WrappedComponent.staticMethod = function() {/*...*/}
 // Now apply a HOC
@@ -1460,7 +1460,7 @@ typeof EnhancedComponent.staticMethod === 'undefined' // true
 
 To solve this, you could copy the methods onto the container before returning it:
 
-```text
+```js
 function enhance(WrappedComponent) {
   class Enhance extends React.Component {/*...*/}
   // Must know exactly which method(s) to copy :(
@@ -1471,7 +1471,7 @@ function enhance(WrappedComponent) {
 
 However, this requires you to know exactly which methods need to be copied. You can use [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics) to automatically copy all non-React static methods:
 
-```text
+```js
 import hoistNonReactStatic from 'hoist-non-react-statics';
 function enhance(WrappedComponent) {
   class Enhance extends React.Component {/*...*/}
@@ -1482,7 +1482,7 @@ function enhance(WrappedComponent) {
 
 Another possible solution is to export the static method separately from the component itself.
 
-```text
+```js
 // Instead of...
 MyComponent.someFunction = someFunction;
 export default MyComponent;
@@ -1504,7 +1504,7 @@ The solution for this problem is to use the `React.forwardRef` API \(introduced 
 
 ## Fundamentally, JSX just provides syntactic sugar for the `React.createElement(component, props, ...children)` function. The JSX code:
 
-```text
+```js
 <MyButton color="blue" shadowSize={2}>
   Click Me
 </MyButton>
@@ -1512,7 +1512,7 @@ The solution for this problem is to use the `React.forwardRef` API \(introduced 
 
 compiles into:
 
-```text
+```js
 React.createElement(
   MyButton,
   {color: 'blue', shadowSize: 2},
@@ -1522,13 +1522,13 @@ React.createElement(
 
 You can also use the self-closing form of the tag if there are no children. So:
 
-```text
+```js
 <div className="sidebar" />
 ```
 
 compiles into:
 
-```text
+```js
 React.createElement(
   'div',
   {className: 'sidebar'}
@@ -1549,7 +1549,7 @@ Since JSX compiles into calls to `React.createElement`, the `React` library must
 
 For example, both of the imports are necessary in this code, even though `React` and `CustomButton` are not directly referenced from JavaScript:
 
-```text
+```js
 import React from 'react';import CustomButton from './CustomButton';function WarningButton() {
   // return React.createElement(CustomButton, {color: 'red'}, null);  return <CustomButton color="red" />;
 }
@@ -1561,7 +1561,7 @@ If you don’t use a JavaScript bundler and loaded React from a `<script>` tag, 
 
 You can also refer to a React component using dot-notation from within JSX. This is convenient if you have a single module that exports many React components. For example, if `MyComponents.DatePicker` is a component, you can use it directly from JSX with:
 
-```text
+```js
 import React from 'react';
 
 const MyComponents = {
@@ -1582,7 +1582,7 @@ We recommend naming components with a capital letter. If you do have a component
 
 For example, this code will not run as expected:
 
-```text
+```js
 import React from 'react';
 
 // Wrong! This is a component and should have been capitalized:function hello(props) {  // Correct! This use of <div> is legitimate because div is a valid HTML tag:
@@ -1595,7 +1595,7 @@ function HelloWorld() {
 
 To fix this, we will rename `hello` to `Hello` and use `<Hello />` when referring to it:
 
-```text
+```js
 import React from 'react';
 
 // Correct! This is a component and should be capitalized:function Hello(props) {  // Correct! This use of <div> is legitimate because div is a valid HTML tag:
@@ -1610,7 +1610,7 @@ function HelloWorld() {
 
 You cannot use a general expression as the React element type. If you do want to use a general expression to indicate the type of the element, just assign it to a capitalized variable first. This often comes up when you want to render a different component based on a prop:
 
-```text
+```js
 import React from 'react';
 import { PhotoStory, VideoStory } from './stories';
 
@@ -1625,7 +1625,7 @@ function Story(props) {
 
 To fix this, we will assign the type to a capitalized variable first:
 
-```text
+```js
 import React from 'react';
 import { PhotoStory, VideoStory } from './stories';
 
@@ -1652,7 +1652,7 @@ For `MyComponent`, the value of `props.foo` will be `10` because the expression 
 
 `if` statements and `for` loops are not expressions in JavaScript, so they can’t be used in JSX directly. Instead, you can put these in the surrounding code. For example:
 
-```text
+```js
 function NumberDescriber(props) {
   let description;
   if (props.number % 2 == 0) {    description = <strong>even</strong>;  } else {    description = <i>odd</i>;  }  return <div>{props.number} is an {description} number</div>;
@@ -1685,7 +1685,7 @@ In general, we don’t recommend _not_ passing a value for a prop, because it ca
 
 If you already have `props` as an object, and you want to pass it in JSX, you can use `...` as a “spread” operator to pass the whole props object. These two components are equivalent:
 
-```text
+```js
 function App1() {
   return <Greeting firstName="Ben" lastName="Hector" />;
 }
@@ -1697,7 +1697,7 @@ function App2() {
 
 You can also pick specific props that your component will consume while passing all other props using the spread operator.
 
-```text
+```js
 const Button = props => {
   const { kind, ...other } = props;  const className = kind === "primary" ? "PrimaryButton" : "SecondaryButton";
   return <button className={className} {...other} />;
@@ -1730,7 +1730,7 @@ This is valid JSX, and `props.children` in `MyComponent` will simply be the stri
 
 JSX removes whitespace at the beginning and ending of a line. It also removes blank lines. New lines adjacent to tags are removed; new lines that occur in the middle of string literals are condensed into a single space. So these all render to the same thing:
 
-```text
+```js
 <div>Hello World</div><div>
   Hello World
 </div><div>
@@ -1746,7 +1746,7 @@ JSX removes whitespace at the beginning and ending of a line. It also removes bl
 
 You can provide more JSX elements as the children. This is useful for displaying nested components:
 
-```text
+```js
 <MyContainer>
   <MyFirstComponent />
   <MySecondComponent />
@@ -1755,7 +1755,7 @@ You can provide more JSX elements as the children. This is useful for displaying
 
 You can mix together different types of children, so you can use string literals together with JSX children. This is another way in which JSX is like HTML, so that this is both valid JSX and valid HTML:
 
-```text
+```js
 <div>
   Here is a list:
   <ul><li>Item 1</li><li>Item 2</li></ul></div>
@@ -1773,7 +1773,7 @@ You can pass any JavaScript expression as children, by enclosing it within `{}`.
 
 This is often useful for rendering a list of JSX expressions of arbitrary length. For example, this renders an HTML list:
 
-```text
+```js
 function Item(props) {
   return <li>{props.message}</li>;}
 
@@ -1786,7 +1786,7 @@ function TodoList() {
 
 JavaScript expressions can be mixed with other types of children. This is often useful in lieu of string templates:
 
-```text
+```js
 function Hello(props) {
   return <div>Hello {props.addressee}!</div>;}
 ```
@@ -1795,7 +1795,7 @@ function Hello(props) {
 
 Normally, JavaScript expressions inserted in JSX will evaluate to a string, a React element, or a list of those things. However, `props.children` works just like any other prop in that it can pass any sort of data, not just the sorts that React knows how to render. For example, if you have a custom component, you could have it take a callback as `props.children`:
 
-```text
+```js
 // Calls the children callback numTimes to produce a repeated component
 function Repeat(props) {
   let items = [];
@@ -1816,33 +1816,33 @@ Children passed to a custom component can be anything, as long as that component
 
 `false`, `null`, `undefined`, and `true` are valid children. They simply don’t render. These JSX expressions will all render to the same thing:
 
-```text
+```js
 <div /><div></div><div>{false}</div><div>{null}</div><div>{undefined}</div><div>{true}</div>
 ```
 
 This can be useful to conditionally render React elements. This JSX renders the `<Header />` component only if `showHeader` is `true`:
 
-```text
+```js
 <div>  {showHeader && <Header />}  <Content /></div>
 ```
 
 One caveat is that some [“falsy” values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy), such as the `0` number, are still rendered by React. For example, this code will not behave as you might expect because `0` will be printed when `props.messages` is an empty array:
 
-```text
+```js
 <div>  {props.messages.length &&    <MessageList messages={props.messages} />}
 </div>
 ```
 
 To fix this, make sure that the expression before `&&` is always boolean:
 
-```text
+```js
 <div>  {props.messages.length > 0 &&    <MessageList messages={props.messages} />}
 </div>
 ```
 
 Conversely, if you want a value like `false`, `true`, `null`, or `undefined` to appear in the output, you have to [convert it to a string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_conversion) first:
 
-```text
+```js
 <div>  My JavaScript variable is {String(myVariable)}.</div>
 ```
 
@@ -1872,7 +1872,7 @@ You can find instructions for building your app for production below.
 
 If your project is built with [Create React App](https://github.com/facebookincubator/create-react-app), run:
 
-```text
+```js
 npm run build
 ```
 
@@ -1884,7 +1884,7 @@ Remember that this is only necessary before deploying to production. For normal 
 
 We offer production-ready versions of React and React DOM as single files:
 
-```text
+```js
 <script src="<https://unpkg.com/react@17/umd/react.production.min.js>"></script><script src="<https://unpkg.com/react-dom@17/umd/react-dom.production.min.js>"></script>
 ```
 
@@ -1894,7 +1894,7 @@ Remember that only React files ending with `.production.min.js` are suitable for
 
 For the most efficient Brunch production build, install the `[terser-brunch](<https://github.com/brunch/terser-brunch>)` plugin:
 
-```text
+```js
 # If you use npm
 npm install --save-dev terser-brunch
 
@@ -1904,7 +1904,7 @@ yarn add --dev terser-brunch
 
 Then, to create a production build, add the `-p` flag to the `build` command:
 
-```text
+```js
 brunch build -p
 ```
 
@@ -1914,7 +1914,7 @@ Remember that you only need to do this for production builds. You shouldn’t pa
 
 For the most efficient Browserify production build, install a few plugins:
 
-```text
+```js
 # If you use npm
 npm install --save-dev envify terser uglifyify
 
@@ -1930,7 +1930,7 @@ To create a production build, make sure that you add these transforms **\(the or
 
 For example:
 
-```text
+```js
 browserify ./index.js \\
   -g [ envify --NODE_ENV production ] \\
   -g uglifyify \\
@@ -1943,7 +1943,7 @@ Remember that you only need to do this for production builds. You shouldn’t ap
 
 For the most efficient Rollup production build, install a few plugins:
 
-```text
+```js
 # If you use npm
 npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 
@@ -1957,7 +1957,7 @@ To create a production build, make sure that you add these plugins **\(the order
 * The `[commonjs](<https://github.com/rollup/rollup-plugin-commonjs>)` plugin provides support for CommonJS in Rollup.
 * The `[terser](<https://github.com/TrySound/rollup-plugin-terser>)` plugin compresses and mangles the final bundle.
 
-```text
+```js
 plugins: [
   // ...
   require('rollup-plugin-replace')({
@@ -1979,7 +1979,7 @@ Remember that you only need to do this for production builds. You shouldn’t ap
 
 Webpack v4+ will minify your code by default in production mode.
 
-```text
+```js
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
@@ -2022,7 +2022,7 @@ When a component’s props or state change, React decides whether an actual DOM 
 
 Even though React only updates the changed DOM nodes, re-rendering still takes some time. In many cases it’s not a problem, but if the slowdown is noticeable, you can speed all of this up by overriding the lifecycle function `shouldComponentUpdate`, which is triggered before the re-rendering process starts. The default implementation of this function returns `true`, leaving React to perform the update:
 
-```text
+```js
 shouldComponentUpdate(nextProps, nextState) {
   return true;
 }
@@ -2050,7 +2050,7 @@ Note that React only had to do DOM mutations for C6, which was inevitable. For C
 
 If the only way your component ever changes is when the `props.color` or the `state.count` variable changes, you could have `shouldComponentUpdate` check that:
 
-```text
+```js
 class CounterButton extends React.Component {
   constructor(props) {
     super(props);
@@ -2079,7 +2079,7 @@ class CounterButton extends React.Component {
 
 In this code, `shouldComponentUpdate` is just checking if there is any change in `props.color` or `state.count`. If those values don’t change, the component doesn’t update. If your component got more complex, you could use a similar pattern of doing a “shallow comparison” between all the fields of `props` and `state` to determine if the component should update. This pattern is common enough that React provides a helper to use this logic - just inherit from `React.PureComponent`. So this code is a simpler way to achieve the same thing:
 
-```text
+```js
 class CounterButton extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -2100,7 +2100,7 @@ Most of the time, you can use `React.PureComponent` instead of writing your own 
 
 This can be a problem with more complex data structures. For example, let’s say you want a `ListOfWords` component to render a comma-separated list of words, with a parent `WordAdder` component that lets you click a button to add a word to the list. This code does _not_ work correctly:
 
-```text
+```js
 class ListOfWords extends React.PureComponent {
   render() {
     return <div>{this.props.words.join(',')}</div>;
@@ -2139,7 +2139,7 @@ The problem is that `PureComponent` will do a simple comparison between the old 
 
 The simplest way to avoid this problem is to avoid mutating values that you are using as props or state. For example, the `handleClick` method above could be rewritten using `concat` as:
 
-```text
+```js
 handleClick() {
   this.setState(state => ({
     words: state.words.concat(['marklar'])
@@ -2149,7 +2149,7 @@ handleClick() {
 
 ES6 supports a [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) for arrays which can make this easier. If you’re using Create React App, this syntax is available by default.
 
-```text
+```js
 handleClick() {
   this.setState(state => ({
     words: [...state.words, 'marklar'],
@@ -2163,7 +2163,7 @@ You can also rewrite code that mutates objects to avoid mutation, in a similar w
 
 To write this without mutating the original object, we can use [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method:
 
-```text
+```js
 function updateColorMap(colormap) {
   return Object.assign({}, colormap, {right: 'blue'});
 }
@@ -2173,7 +2173,7 @@ function updateColorMap(colormap) {
 
 [Object spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) makes it easier to update objects without mutation as well:
 
-```text
+```js
 function updateColorMap(colormap) {
   return {...colormap, right: 'blue'};
 }
@@ -2193,7 +2193,7 @@ Is this page useful?[Edit this page](https://github.com/reactjs/reactjs.org/tree
 
 A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic.
 
-```text
+```js
 <DataProvider render={data => (
   <h1>Hello {data.target}</h1>)}/>
 ```
@@ -2208,7 +2208,7 @@ Components are the primary unit of code reuse in React, but it’s not always ob
 
 For example, the following component tracks the mouse position in a web app:
 
-```text
+```js
 class MouseTracker extends React.Component {
   constructor(props) {
     super(props);
@@ -2239,7 +2239,7 @@ Now the question is: How can we reuse this behavior in another component? In oth
 
 Since components are the basic unit of code reuse in React, let’s try refactoring the code a bit to use a `<Mouse>` component that encapsulates the behavior we need to reuse elsewhere.
 
-```text
+```js
 // The <Mouse> component encapsulates the behavior we need...
 class Mouse extends React.Component {
   constructor(props) {
@@ -2282,7 +2282,7 @@ For example, let’s say we have a `<Cat>` component that renders the image of a
 
 As a first pass, you might try rendering the `<Cat>` _inside `<Mouse>`’s `render` method_, like this:
 
-```text
+```js
 class Cat extends React.Component {
   render() {
     const mouse = this.props.mouse;
@@ -2335,7 +2335,7 @@ This approach will work for our specific use case, but we haven’t achieved the
 
 Here’s where the render prop comes in: Instead of hard-coding a `<Cat>` inside a `<Mouse>` component, and effectively changing its rendered output, we can provide `<Mouse>` with a function prop that it uses to dynamically determine what to render–a render prop.
 
-```text
+```js
 class Cat extends React.Component {
   render() {
     const mouse = this.props.mouse;
@@ -2391,7 +2391,7 @@ This technique makes the behavior that we need to share extremely portable. To g
 
 One interesting thing to note about render props is that you can implement most [higher-order components](https://reactjs.org/docs/higher-order-components.html) \(HOC\) using a regular component with a render prop. For example, if you would prefer to have a `withMouse` HOC instead of a `<Mouse>` component, you could easily create one using a regular `<Mouse>` with a render prop:
 
-```text
+```js
 // If you really want a HOC for some reason, you can easily
 // create one using a regular component with a render prop!
 function withMouse(Component) {
@@ -2413,14 +2413,14 @@ It’s important to remember that just because the pattern is called “render p
 
 Although the examples above use `render`, we could just as easily use the `children` prop!
 
-```text
+```js
 <Mouse children={mouse => (
   <p>The mouse position is {mouse.x}, {mouse.y}</p>)}/>
 ```
 
 And remember, the `children` prop doesn’t actually need to be named in the list of “attributes” in your JSX element. Instead, you can put it directly _inside_ the element!
 
-```text
+```js
 <Mouse>
   {mouse => (
     <p>The mouse position is {mouse.x}, {mouse.y}</p>)}
@@ -2431,7 +2431,7 @@ You’ll see this technique used in the [react-motion](https://github.com/chengl
 
 Since this technique is a little unusual, you’ll probably want to explicitly state that `children` should be a function in your `propTypes` when designing an API like this.
 
-```text
+```js
 Mouse.propTypes = {
   children: PropTypes.func.isRequired
 };
@@ -2445,7 +2445,7 @@ Using a render prop can negate the advantage that comes from using `[React.PureC
 
 For example, continuing with our `<Mouse>` component from above, if `Mouse` were to extend `React.PureComponent` instead of `React.Component`, our example would look like this:
 
-```text
+```js
 class Mouse extends React.PureComponent {
   // Same implementation as above...
 }
@@ -2471,7 +2471,7 @@ In this example, each time `<MouseTracker>` renders, it generates a new function
 
 To get around this problem, you can sometimes define the prop as an instance method, like so:
 
-```text
+```js
 class MouseTracker extends React.Component {
   // Defined as an instance method, `this.renderTheCat` always
   // refers to *same* function when we use it in render

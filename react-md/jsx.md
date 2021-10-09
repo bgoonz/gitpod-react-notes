@@ -4,7 +4,7 @@
 
 Consider this variable declaration:
 
-```text
+```js
 const element = <h1>Hello, world!</h1>;
 ```
 
@@ -28,7 +28,7 @@ With that out of the way, let’s get started!
 
 In the example below, we declare a variable called `name` and then use it inside JSX by wrapping it in curly braces:
 
-```text
+```js
 const name = 'Josh Perez';const element = <h1>Hello, {name}</h1>;
 ReactDOM.render(
   element,
@@ -40,7 +40,7 @@ You can put any valid [JavaScript expression](https://developer.mozilla.org/en-U
 
 In the example below, we embed the result of calling a JavaScript function, `formatName(user)`, into an `<h1>` element.
 
-```text
+```js
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
@@ -71,7 +71,7 @@ After compilation, JSX expressions become regular JavaScript function calls and 
 
 This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions:
 
-```text
+```js
 function getGreeting(user) {
   if (user) {
     return <h1>Hello, {formatName(user)}!</h1>;  }
@@ -82,13 +82,13 @@ function getGreeting(user) {
 
 You may use quotes to specify string literals as attributes:
 
-```text
+```js
 const element = <div tabIndex="0"></div>;
 ```
 
 You may also use curly braces to embed a JavaScript expression in an attribute:
 
-```text
+```js
 const element = <img src={user.avatarUrl}></img>;
 ```
 
@@ -104,13 +104,13 @@ Don’t put quotes around curly braces when embedding a JavaScript expression in
 
 If a tag is empty, you may close it immediately with `/>`, like XML:
 
-```text
+```js
 const element = <img src={user.avatarUrl} />;
 ```
 
 JSX tags may contain children:
 
-```text
+```js
 const element = (
   <div>
     <h1>Hello!</h1>
@@ -123,7 +123,7 @@ const element = (
 
 It is safe to embed user input in JSX:
 
-```text
+```js
 const title = response.potentiallyMaliciousInput;
 // This is safe:
 const element = <h1>{title}</h1>;
@@ -137,7 +137,7 @@ Babel compiles JSX down to `React.createElement()` calls.
 
 These two examples are identical:
 
-```text
+```js
 const element = (
   <h1 className="greeting">
     Hello, world!
@@ -145,7 +145,7 @@ const element = (
 );
 ```
 
-```text
+```js
 const element = React.createElement(
   'h1',
   {className: 'greeting'},
@@ -155,7 +155,7 @@ const element = React.createElement(
 
 `React.createElement()` performs a few checks to help you write bug-free code but essentially it creates an object like this:
 
-```text
+```js
 // Note: this structure is simplified
 const element = {
   type: 'h1',

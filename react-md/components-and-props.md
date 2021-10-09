@@ -10,7 +10,7 @@ Conceptually, components are like JavaScript functions. They accept arbitrary in
 
 The simplest way to define a component is to write a JavaScript function:
 
-```text
+```js
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -20,7 +20,7 @@ This function is a valid React component because it accepts a single “props”
 
 You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
 
-```text
+```js
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>;
@@ -36,13 +36,13 @@ Function and Class components both have some additional features that we will di
 
 Previously, we only encountered React elements that represent DOM tags:
 
-```text
+```js
 const element = <div />;
 ```
 
 However, elements can also represent user-defined components:
 
-```text
+```js
 const element = <Welcome name="Sara" />;
 ```
 
@@ -50,7 +50,7 @@ When React sees an element representing a user-defined component, it passes JSX 
 
 For example, this code renders “Hello, Sara” on the page:
 
-```text
+```js
 function Welcome(props) {  return <h1>Hello, {props.name}</h1>;
 }
 
@@ -81,7 +81,7 @@ Components can refer to other components in their output. This lets us use the s
 
 For example, we can create an `App` component that renders `Welcome` many times:
 
-```text
+```js
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -109,7 +109,7 @@ Don’t be afraid to split components into smaller components.
 
 For example, consider this `Comment` component:
 
-```text
+```js
 function Comment(props) {
   return (
     <div className="Comment">
@@ -141,7 +141,7 @@ This component can be tricky to change because of all the nesting, and it is als
 
 First, we will extract `Avatar`:
 
-```text
+```js
 function Avatar(props) {
   return (
     <img className="Avatar"      src={props.user.avatarUrl}      alt={props.user.name}    />  );
@@ -154,7 +154,7 @@ We recommend naming props from the component’s own point of view rather than t
 
 We can now simplify `Comment` a tiny bit:
 
-```text
+```js
 function Comment(props) {
   return (
     <div className="Comment">
@@ -176,7 +176,7 @@ function Comment(props) {
 
 Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user’s name:
 
-```text
+```js
 function UserInfo(props) {
   return (
     <div className="UserInfo">      <Avatar user={props.user} />      <div className="UserInfo-name">        {props.user.name}      </div>    </div>  );
@@ -185,7 +185,7 @@ function UserInfo(props) {
 
 This lets us simplify `Comment` even further:
 
-```text
+```js
 function Comment(props) {
   return (
     <div className="Comment">
@@ -208,7 +208,7 @@ Extracting components might seem like grunt work at first, but having a palette 
 
 Whether you declare a component [as a function or a class](https://reactjs.org/docs/components-and-props.html#function-and-class-components), it must never modify its own props. Consider this `sum` function:
 
-```text
+```js
 function sum(a, b) {
   return a + b;
 }
@@ -218,7 +218,7 @@ Such functions are called [“pure”](https://en.wikipedia.org/wiki/Pure_functi
 
 In contrast, this function is impure because it changes its own input:
 
-```text
+```js
 function withdraw(account, amount) {
   account.total -= amount;
 }

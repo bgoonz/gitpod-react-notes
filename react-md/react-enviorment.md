@@ -2,7 +2,7 @@
 
 First thing we need to do is setup our development environment and hook up React. Our end goal will be to get a basic message up on screen. Let's create a new directory and download the packages we need.
 
-```text
+```js
 mkdir starwars_api
 cd starwars_api
 npm init -y
@@ -12,7 +12,7 @@ npm install --save-dev babel-core babel-preset-es2015 babel-preset-react webpack
 
 Now let's create our entrance file. Create a file at `src/app.js` and put the following in it.
 
-```text
+```js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
@@ -46,7 +46,7 @@ if (module.hot) {
 
 We are displaying a central `App` component. So let's create it! Create a file at `src/components/App.js` and put the following in it.
 
-```text
+```js
 import React from 'react';
 
 const App = () =>
@@ -61,7 +61,7 @@ export default App;
 
 We also need to create our `index.html` file that we are including in our `app.js` file. Create a file at `src/index.html` and put the following in it.
 
-```text
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,7 +101,7 @@ This is a basic HTML page. We are including Bootstrap and its basic theme for so
 
 Now that we have all that setup, let's create a webpack config that we can use to build our project. Create a file in the root of your project called `webpack.config.js` and put the following in it.
 
-```text
+```js
 const webpack = require('webpack');
 const path = require('path');
 
@@ -137,7 +137,7 @@ Here we are exporting our config object like normal. We point webpack to start a
 
 Let's create a `.babelrc` file to configure babel.
 
-```text
+```js
 {
   "presets": [
     ["es2015", { "modules": false }],

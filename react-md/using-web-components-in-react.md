@@ -6,7 +6,7 @@ Most people who use React don’t use Web Components, but you may want to, espec
 
 ## Using Web Components in React
 
-```text
+```js
 class HelloMessage extends React.Component {
   render() {
     return <div>Hello <x-search>{this.props.name}</x-search>!</div>;
@@ -22,7 +22,7 @@ class HelloMessage extends React.Component {
 
 One common confusion is that Web Components use “class” instead of “className”.
 
-```text
+```js
 function BrickFlipbox() {
   return (
     <brick-flipbox class="demo">
@@ -35,7 +35,7 @@ function BrickFlipbox() {
 
 ## Using React in your Web Components
 
-```text
+```js
 class XSearch extends HTMLElement {
   connectedCallback() {
     const mountPoint = document.createElement('span');

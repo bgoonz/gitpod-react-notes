@@ -1052,7 +1052,7 @@ Both functions in the example above accomplish the same thing. However, the arro
 
 The syntax for a multiple statement arrow function is as follows:
 
-```text
+```js
 (parameters, go, here) => {
   statement1;
   statement2;

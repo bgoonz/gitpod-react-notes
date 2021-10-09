@@ -390,7 +390,7 @@
 
    The above `React.createElement()` function returns an object:
 
-   ```text
+   ```js
     {
       type: 'div',
       props: {
@@ -463,7 +463,7 @@
 
    Let's create a user component with message state,
 
-```text
+```js
 ```jsx harmony
 class User extends React.Component {
   constructor(props) {
@@ -505,7 +505,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
       \`\`\`jsx harmony
 
-      ```text
+      ```js
       This `reactProp` (or whatever you came up with) name then becomes a property attached to React's native props object which originally already exists on all components created using React library.
       ```
 
@@ -611,7 +611,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
       \`\`\`jsx harmony handleClick = \(\) =&gt; { console.log\('this is:', this\) }
 
-      ```text
+      ```js
        ```jsx harmony
        <button onClick={this.handleClick}>
          {'Click me'}
@@ -636,7 +636,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
     this.handleClick\(id\)} /&gt;
 
-   ```text
+   ```js
    This is an equivalent to calling `.bind`:
 
    ```jsx harmony
@@ -677,7 +677,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`jsx harmony const todoItems = todos.map\(\(todo\) =&gt;  \)
 
-   ```text
+   ```js
    When you don't have stable IDs for rendered items, you may use the item *index* as a *key* as a last resort:
 
    ```jsx harmony
@@ -706,7 +706,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    There are two approaches 1. This is a recently added approach. _Refs_ are created using `React.createRef()` method and attached to React elements via the `ref` attribute. In order to use _refs_ throughout the component, just assign the _ref_ to the instance property within constructor.
 
-   ```text
+   ```js
    ```jsx harmony
    class MyComponent extends React.Component {
      constructor(props) {
@@ -726,7 +726,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
        class SearchBar extends Component {
 
-      ```text
+      ```js
       constructor(props) {
          super(props);
          this.txtSearch = null;
@@ -817,7 +817,7 @@ State is similar to props, but it is private and fully controlled by the compone
    3. They _don't work with static analysis_ like Flow. Flow can't guess the magic that framework does to make the string ref appear on `this.refs`, as well as its type \(which could be different\). Callback refs are friendlier to static analysis.
    4. It doesn't work as most people would expect with the "render callback" pattern \(e.g. \) \`\`\`jsx harmony class MyComponent extends Component { renderRow = \(index\) =&gt; { // This won't work. Ref will get attached to DataTable rather than MyComponent: return ;
 
-      ```text
+      ```js
       // This would work though! Callback refs are awesome.
       return <input ref={input => this['input-' + index] = input} />;
       ```
@@ -992,7 +992,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`jsx harmony function HOC\(WrappedComponent\) { return class Test extends Component { render\(\) { const newProps = { title: 'New Header', footer: false, showFeatureX: false, showFeatureY: true }
 
-   ```text
+   ```js
      return <WrappedComponent {...this.props} {...newProps} />
    }
    ```
@@ -1041,7 +1041,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
     {/\* Single-line comments\(In vanilla JavaScript, the single-line comments are represented by double slash\(//\)\) \*/} {\`Welcome ${user}, let's play React\`}
 
-   ```text
+   ```js
    **Multi-line comments:**
 
    ```jsx harmony
@@ -1118,7 +1118,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`jsx harmony render\(\) { // Wrong: handleClick is called instead of passed as a reference! return {'Click Me'} }
 
-   ```text
+   ```js
    Instead, pass the function itself without parenthesis:
 
    ```jsx harmony
@@ -1172,7 +1172,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`jsx harmony render\(\) { return \(     &lt;/React.Fragment&gt; \) }
 
-   ```text
+   ```js
    There is also a *shorter syntax*, but it's not supported in many tools:
 
    ```jsx harmony
@@ -1279,7 +1279,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    render\(\) { return \( &lt;&gt; {\`Welcome, ${this.props.name}\`} {\`Age, ${this.props.age}\`} &lt;/&gt; \) } }
 
-   ```text
+   ```js
    **Note:** In React v15.5 *PropTypes* were moved from `React.PropTypes` to `prop-types` library.
 
    *The Equivalent Functional Component*
@@ -1343,7 +1343,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    render\(\) { if \(this.state.hasError\) { // You can render any custom fallback UI return {'Something went wrong.'} } return this.props.children } }
 
-   ```text
+   ```js
    After that use it as a regular component:
 
    ```jsx harmony
@@ -1382,7 +1382,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    This method is used to render a React element into the DOM in the supplied container and return a reference to the component. If the React element was previously rendered into container, it will perform an update on it and only mutate the DOM as necessary to reflect the latest changes.
 
-   ```text
+   ```js
    ReactDOM.render(element, container[, callback])
    ```
 
@@ -1466,7 +1466,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`jsx harmony {todos.map\(\(todo, index\) =&gt;  \)}
 
-   ```text
+   ```js
    If you use element data for unique key, assuming todo.id is unique to this list and stable, React would be able to reorder elements without needing to reevaluate them as much.
 
    ```jsx harmony
@@ -1496,7 +1496,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`jsx harmony class MyComponent extends React.Component { constructor\(props\) { super\(props\)
 
-   ```text
+   ```js
    this.state = {
      records: [],
      inputValue: this.props.inputValue
@@ -1507,7 +1507,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    render\(\) { return {this.state.inputValue} } }
 
-   ```text
+   ```js
    Using props inside render method will update the value:
 
    ```jsx harmony
@@ -1534,7 +1534,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`jsx harmony const MyComponent = \({ name, address }\) =&gt; \( {name} \)
 
-   ```text
+   ```js
    If you need an `if-else` condition then use *ternary operator*.
 
    ```jsx harmony
@@ -1573,7 +1573,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    / _title is a string that will be set as a document title WrappedComponent is what our decorator will receive when put directly above a component class as seen in the example above_ / const setTitle = \(title\) =&gt; \(WrappedComponent\) =&gt; { return class extends React.Component { componentDidMount\(\) { document.title = title }
 
-   ```text
+   ```js
    render() {
      return <WrappedComponent {...this.props} />
    }
@@ -1599,7 +1599,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    const Consumer = \(\) =&gt; {  {'I will memoize the following entry:'} }
 
-   ```text
+   ```js
    **Update:** Since React v16.6.0, we have a `React.memo`. It provides a higher order component which memoizes component unless the props change. To use it, simply wrap the component using React.memo before you use it.
 
    ```js
@@ -1638,7 +1638,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    Let's create Todo App using _CRA_:
 
-   ```text
+   ```js
    # Installation
    $ npm install -g create-react-app
 
@@ -1907,7 +1907,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    If you are rendering your component using JSX, the name of that component has to begin with a capital letter otherwise React will throw an error as unrecognized tag. This convention is because only HTML elements and SVG tags can begin with a lowercase letter. \`\`\`jsx harmony class SomeComponent extends Component { // Code goes here }
 
-   ```text
+   ```js
    You can define component class which name starts with lowercase letter, but when it's imported it should have capital letter. Here lowercase is fine:
 
    ```jsx harmony
@@ -1926,7 +1926,7 @@ State is similar to props, but it is private and fully controlled by the compone
 
    \`\`\`
 
-```text
+```js
 #### What are the exceptions on React component naming?
 
 The component names should start with a uppercase letter but there are few exceptions on this convention. The lowercase tag names with a dot (property accessors) are still considered as valid component names.
@@ -1951,7 +1951,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx harmony
 
-   ```text
+   ```js
    Would render an empty div to the DOM with React v15:
 
    ```html
@@ -2049,7 +2049,7 @@ For example the below tag can be compiled to a valid component,
 
     {items.map\(item =&gt;\)}
 
-   ```text
+   ```js
    But you can't iterate using `for` loop:
 
    ```jsx harmony
@@ -2070,7 +2070,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx harmony ![](images/{this.props.image})
 
-   ```text
+   ```js
    But you can put any JS expression inside curly braces as the entire attribute value. So the below expression works:
 
    ```jsx harmony
@@ -2106,7 +2106,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx harmony
 
-   ```text
+   ```js
    Instead you need to move curly braces outside (don't forget to include spaces between class names):
 
    ```jsx harmony
@@ -2143,7 +2143,7 @@ For example the below tag can be compiled to a valid component,
 
    {'User'}
 
-   ```text
+   ```js
    Since `for` is a reserved keyword in JavaScript, use `htmlFor` instead.
 
    ```jsx harmony
@@ -2159,7 +2159,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx harmony {'Submit'}
 
-   ```text
+   ```js
    If you're using React Native then you can use the array notation:
 
    ```jsx harmony
@@ -2213,7 +2213,7 @@ For example the below tag can be compiled to a valid component,
 
    The `componentDidUpdate` lifecycle method will be called when state changes. You can compare provided state and props values with current state and props to determine if something meaningful changed.
 
-   ```text
+   ```js
    componentDidUpdate(object prevProps, object prevState)
    ```
 
@@ -2243,7 +2243,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx harmony render\(\) { return false }
 
-   ```text
+   ```js
    ```jsx harmony
    render() {
      return null
@@ -2252,7 +2252,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx harmony render\(\) { return \[\] }
 
-   ```text
+   ```js
    ```jsx harmony
    render() {
      return <React.Fragment></React.Fragment>
@@ -2385,7 +2385,7 @@ For example the below tag can be compiled to a valid component,
 
    Create a file called `.env` in the project root and write the import path:
 
-   ```text
+   ```js
    NODE_PATH=src/app
    ```
 
@@ -2500,7 +2500,7 @@ For example the below tag can be compiled to a valid component,
 
       One common way to structure projects is locate CSS, JS, and tests together, grouped by feature or route.
 
-      ```text
+      ```js
        common/
        ├─ Avatar.js
        ├─ Avatar.css
@@ -2525,7 +2525,7 @@ For example the below tag can be compiled to a valid component,
 
       Another popular way to structure projects is to group similar files together.
 
-      ```text
+      ```js
        api/
        ├─ APIUtils.js
        ├─ APIUtils.test.js
@@ -3014,7 +3014,7 @@ For example the below tag can be compiled to a valid component,
 
    Finally, run `yarn test` or `npm test` and Jest will print a result:
 
-   ```text
+   ```js
    $ yarn test
    PASS ./sum.test.js
    ✓ adds 1 + 2 to equal 3 (2ms)
@@ -3455,7 +3455,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx harmony import ConnectedComponent from './containers/ConnectedComponent';
 
-   ```text
+   ```js
    The `ownProps` inside your `mapStateToProps()` and `mapDispatchToProps()` functions will be an object:
 
    ```javascript
@@ -3486,7 +3486,7 @@ For example the below tag can be compiled to a valid component,
 
    It is available in NPM:
 
-   ```text
+   ```js
    $ npm install --save redux-saga
    ```
 
@@ -3628,7 +3628,7 @@ For example the below tag can be compiled to a valid component,
 
    For example, let's take an action which represents adding a new todo item:
 
-   ```text
+   ```js
    {
      type: ADD_TODO,
      text: 'Add todo item'
@@ -3659,7 +3659,7 @@ For example the below tag can be compiled to a valid component,
 
    You can use `console.log`, `console.warn`, etc. As of React Native v0.29 you can simply run the following to see logs in the console:
 
-   ```text
+   ```js
    $ react-native log-ios
    $ react-native log-android
    ```
@@ -3708,7 +3708,7 @@ For example the below tag can be compiled to a valid component,
 
    1. Install `font-awesome`:
 
-      ```text
+      ```js
        $ npm install --save font-awesome
       ```
 
@@ -3871,7 +3871,7 @@ For example the below tag can be compiled to a valid component,
 
    Now the project layout should look like the following:
 
-   ```text
+   ```js
    my-app/
    ├─ .gitignore
    ├─ images.d.ts
@@ -4047,7 +4047,7 @@ For example the below tag can be compiled to a valid component,
 
    \`\`\`jsx class UserForm extends Component { handleSubmit = \(\) =&gt; { console.log\("Input Value is: ", this.input.value\) }
 
-```text
+```js
    render () {
     return (
       <form onSubmit={this.handleSubmit}>

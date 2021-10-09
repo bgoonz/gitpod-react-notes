@@ -10,7 +10,7 @@ Some components don’t know their children ahead of time. This is especially co
 
 We recommend that such components use the special `children` prop to pass children elements directly into their output:
 
-```text
+```js
 function FancyBorder(props) {
   return (
     <div className={'FancyBorder FancyBorder-' + props.color}>
@@ -21,7 +21,7 @@ function FancyBorder(props) {
 
 This lets other components pass arbitrary children to them by nesting the JSX:
 
-```text
+```js
 function WelcomeDialog() {
   return (
     <FancyBorder color="blue">
@@ -36,7 +36,7 @@ Anything inside the `<FancyBorder>` JSX tag gets passed into the `FancyBorder` c
 
 While this is less common, sometimes you might need multiple “holes” in a component. In such cases you may come up with your own convention instead of using `children`:
 
-```text
+```js
 function SplitPane(props) {
   return (
     <div className="SplitPane">
@@ -73,7 +73,7 @@ Sometimes we think about components as being “special cases” of other compon
 
 In React, this is also achieved by composition, where a more “specific” component renders a more “generic” one and configures it with props:
 
-```text
+```js
 function Dialog(props) {
   return (
     <FancyBorder color="blue">
@@ -95,7 +95,7 @@ function WelcomeDialog() {
 
 Composition works equally well for components defined as classes:
 
-```text
+```js
 function Dialog(props) {
   return (
     <FancyBorder color="blue">

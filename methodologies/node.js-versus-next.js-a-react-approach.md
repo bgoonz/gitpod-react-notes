@@ -51,7 +51,7 @@ Node.js provides a very vast framework and includes many libraries to support ev
 1. We use `create-react-app` for building React applications with Node.js. On the contrary, `create-next-app`\(CNA\) is used for building applications with Next.js.
 2. Discussing the differences between the frameworks should begin with the directory structures. `create-react-app`\(CRA\) generates the following directory structure.
 
-```text
+```js
 nodesampleproject
 ├── README.md
 ├── node_modules
@@ -76,7 +76,7 @@ nodesampleproject
 
 whereas, `create-next-app` generates the directory structure below:
 
-```text
+```js
 nextsampleproject
 ├── README.md
 ├── .next

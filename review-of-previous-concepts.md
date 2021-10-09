@@ -420,7 +420,7 @@ console.log(counter3());
 * Utilize the built in `Function#bind` on a callback to maintain the context of this
   * when we call bind on a function, we get an exotic function back—so the context will always be the same for that new function
 
-```text
+```js
   let cat = {
   purr: function () {
   console.log("meow");
@@ -472,7 +472,7 @@ console.log(this); // Object [global] {etc, etc, etc,  name: 'Layla'}
   * you could also overwrite values or assign values to exist in a space where they should not exist
 * if you call a function as a callback, it will set `this` to be the outer function itself, even if the function you were calling is a method that was called on a particular object
 
-  ```text
+  ```js
   let cat = {
   purr: function () {
   console.log("meow");
@@ -492,7 +492,7 @@ let sayMeow = cat.purrMore; console.log\(sayMeow\(\)\); // TypeError: this.purr 
 
 boundCat\(\); // prints "meow"
 
-```text
+```js
    - `bind` can also work with arguments, so you can have a version of a function with particular arguments and a particular context. the first arg will be the context aka the `this` you want it to use. the next arguments will be the functions arguments that you are binding
       - if you just want to bind it to those arguments in particular, you can use `null` as the first argument, so the context won't be bound, just the arguments
 - Given a code snippet, identify what `this` refers to
